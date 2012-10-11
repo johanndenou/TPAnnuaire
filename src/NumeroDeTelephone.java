@@ -5,7 +5,6 @@ import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 public class NumeroDeTelephone {
 	public String numero;
 
@@ -21,33 +20,32 @@ public class NumeroDeTelephone {
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
-	
-	public String toString(){
+
+	public String toString() {
 		return numero;
 	}
 
-	public static String saisirNumero() throws IOException{
+	public static String saisirNumero() throws IOException {
 		String ligne;
 		boolean isCorrect = false;
-		InputStreamReader isr = new InputStreamReader(new BufferedInputStream(System.in));
+		InputStreamReader isr = new InputStreamReader(new BufferedInputStream(
+				System.in));
 		BufferedReader br = new BufferedReader(isr, 14);
-		while( ((ligne = br.readLine()) != null) && isCorrect){
-			
+		Pattern p = Pattern.compile("([0-9]{2}\\.){4}[0-9]{2}");
+		System.out.println("Saisissez le numéro de tel (01.23.45.67.89) : ");
+		while (((ligne = br.readLine()) != null) && !isCorrect) {
+			if (checkSyntax(p, ligne))
+				isCorrect = true;
+			else
+				System.out.println("Mauvais numéro, indiquez un bon numéro : ");
 		}
-		
+
 		br.close();
 		return ligne;
 	}
-	
-	public static boolean checkSyntax() {
-		Pattern p = Pattern.compile("([0-9]{2}\\.){4}[0-9]{2}");
-		Matcher m = p.matcher("0125485965");
-		boolean b = m.matches();
-		System.out.println(b);
-		Matcher m1 = p.matcher("01.25.48.59.65");
-		boolean b2 = m1.matches();
-		System.out.println(b2);
-		
-		return b;
+
+	public static boolean checkSyntax(Pattern p, String s) {
+		Matcher m = p.matcher(s);
+		return m.matches();
 	}
 }

@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 
 public class test {
 
@@ -23,7 +25,12 @@ public class test {
 		
 		a.afficher();
 		
-		NumeroDeTelephone.checkSyntax();
+		try {
+			NumeroDeTelephone.saisirNumero();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
