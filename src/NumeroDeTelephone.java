@@ -7,7 +7,8 @@ import java.util.regex.Pattern;
 
 public class NumeroDeTelephone {
 	public String numero;
-
+	private static Pattern p = Pattern.compile("([0-9]{2}\\.){4}[0-9]{2}");
+	
 	public NumeroDeTelephone(String numero) {
 		super();
 		this.numero = numero;
@@ -25,27 +26,38 @@ public class NumeroDeTelephone {
 		return numero;
 	}
 
+	/*
+	 * Permet la saisie d'un nouveau numero de telephone
+	 * 
+	 * @return num le numero saisi
+	 * @throws IOException
+	 */
 	public static String saisirNumero() throws IOException {
-		String ligne;
+		String num;
 		boolean isCorrect = false;
 		InputStreamReader isr = new InputStreamReader(new BufferedInputStream(
 				System.in));
 		BufferedReader br = new BufferedReader(isr, 14);
-		Pattern p = Pattern.compile("([0-9]{2}\\.){4}[0-9]{2}");
-		System.out.println("Saisissez le numéro de tel (01.23.45.67.89) : ");
-		while (((ligne = br.readLine()) != null) && !isCorrect) {
-			if (checkSyntax(p, ligne))
+		System.out.println("Saisissez le numero de tel (01.23.45.67.89) : ");
+		while (((num = br.readLine()) != null) && !isCorrect) {
+			if (checkSyntax(p, num))
 				isCorrect = true;
 			else
-				System.out.println("Mauvais numéro, indiquez un bon numéro : ");
+				System.out.println("Mauvais numero, indiquez un bon numero : ");
 		}
 
 		br.close();
-		return ligne;
+		return num;
 	}
 
-	public static boolean checkSyntax(Pattern p, String s) {
-		Matcher m = p.matcher(s);
+	/*
+	 * Verifie qu'un numero est correct
+	 * 
+	 * @param p la regex
+	 * @param num le numero
+	 */
+	public static boolean checkSyntax(Pattern p, String num) {
+		Matcher m = p.matcher(num);
 		return m.matches();
 	}
 }

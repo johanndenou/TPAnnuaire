@@ -1,5 +1,5 @@
 
-public class Personne {
+public class Personne implements Comparable<Personne>{
 	private String nom;
 	private String prenom;
 	
@@ -39,5 +39,12 @@ public class Personne {
 	
 	public String toString(){
 		return nom + " " + prenom;
+	}
+
+	public int compareTo(Personne p) {
+		int i = this.nom.compareTo(p.nom);
+		if (i == 0)
+			i = this.prenom.compareTo(p.prenom);
+		return i;
 	}
 }

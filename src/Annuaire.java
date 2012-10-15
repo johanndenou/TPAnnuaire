@@ -1,6 +1,8 @@
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Annuaire {
 	private Map<Personne, NumeroDeTelephone> map;
@@ -69,11 +71,12 @@ public class Annuaire {
 	
 	
 	/*
-	 * Affiche le contenu de l'annuaire
+	 * Affiche le contenu de l'annuaire trie par ordre alphabetique
 	 */
 	public void afficher(){
-		for(Entry<Personne, NumeroDeTelephone> entry : map.entrySet()){
-			System.out.println(entry.getKey() + " : " + entry.getValue());
+		Set<Personne> set = new TreeSet<Personne>(map.keySet());
+		for(Personne p : set){
+			System.out.println(p + " : " + map.get(p));
 		}
 	}
 }
