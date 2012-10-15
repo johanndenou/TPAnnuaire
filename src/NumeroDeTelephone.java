@@ -32,7 +32,7 @@ public class NumeroDeTelephone {
 	 * @return num le numero saisi
 	 * @throws IOException
 	 */
-	public static String saisirNumero() throws IOException {
+	public static NumeroDeTelephone saisirNumero() throws IOException {
 		String num;
 		boolean isCorrect = false;
 		InputStreamReader isr = new InputStreamReader(new BufferedInputStream(
@@ -45,9 +45,7 @@ public class NumeroDeTelephone {
 			else
 				System.out.println("Mauvais numero, indiquez un bon numero : ");
 		}
-
-		br.close();
-		return num;
+		return new NumeroDeTelephone(num);
 	}
 
 	/*

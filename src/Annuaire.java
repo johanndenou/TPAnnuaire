@@ -27,7 +27,7 @@ public class Annuaire {
 	/*
 	 * Supprime une personne de l'annuaire
 	 * 
-	 * @param p la personne ˆ supprimer
+	 * @param p la personne ï¿½ supprimer
 	 */
 	public void supprimer(Personne p) {
 		map.remove(p);
@@ -45,7 +45,7 @@ public class Annuaire {
 	}
 	
 	/*
-	 * Retourne le numero associe ˆ la personne donnee.
+	 * Retourne le numero associe ï¿½ la personne donnee.
 	 * 
 	 * @param p la personne
 	 * @return le numero de telephone associe
