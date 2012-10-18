@@ -15,10 +15,10 @@ public class Annuaire {
 	}
 	
 	/*
-	 * Ajoute une personne et son numero de telephone
+	 * Ajoute une personne et son numéro de téléphone
 	 * 
 	 * @param p la personne
-	 * @param n le numero
+	 * @param n le numéro
 	 */
 	public void ajouter(Personne p, NumeroDeTelephone n) {
 		map.put(p, n);
@@ -27,17 +27,17 @@ public class Annuaire {
 	/*
 	 * Supprime une personne de l'annuaire
 	 * 
-	 * @param p la personne � supprimer
+	 * @param p la personne à supprimer
 	 */
 	public void supprimer(Personne p) {
 		map.remove(p);
 	}
 	
 	/*
-	 * Modifie le telephone d'une personne
+	 * Modifie le téléphone d'une personne
 	 * 
 	 * @param p la personne
-	 * @param n le nouveau numero
+	 * @param n le nouveau numéro
 	 */
 	public void modifierTel(Personne p, NumeroDeTelephone n) {
 		map.remove(p);
@@ -45,20 +45,20 @@ public class Annuaire {
 	}
 	
 	/*
-	 * Retourne le numero associe � la personne donnee.
+	 * Retourne le numéro associé à la personne donnée.
 	 * 
 	 * @param p la personne
-	 * @return le numero de telephone associe
+	 * @return le numéro de téléphone associé
 	 */
 	public NumeroDeTelephone chercher(Personne p) {
 		return map.get(p);
 	}
 	
 	/*
-	 * Retourne la Personne correspondant au numero de telephone donne
+	 * Retourne la Personne correspondant au numero de téléphone donné
 	 * 
-	 * @param n le numero de telephone
-	 * @return la personne associee au numero, null si le numero n'est pas present dans l'annuaire
+	 * @param n le numéro de téléphone
+	 * @return la personne associée au numéro, null si le numéro n'est pas présent dans l'annuaire
 	 */
 	public Personne chercher(NumeroDeTelephone n) {
 		Personne p = null;
@@ -71,7 +71,7 @@ public class Annuaire {
 	
 	
 	/*
-	 * Affiche le contenu de l'annuaire trie par ordre alphabetique
+	 * Affiche le contenu de l'annuaire trié par ordre alphabétique
 	 */
 	public void afficher(){
 		Set<Personne> set = new TreeSet<Personne>(map.keySet());

@@ -27,9 +27,9 @@ public class NumeroDeTelephone {
 	}
 
 	/*
-	 * Permet la saisie d'un nouveau numero de telephone
+	 * Permet la saisie d'un nouveau numéro de téléphone
 	 * 
-	 * @return num le numero saisi
+	 * @return num le numéro saisi
 	 * @throws IOException
 	 */
 	public static NumeroDeTelephone saisirNumero() throws IOException {
@@ -38,21 +38,21 @@ public class NumeroDeTelephone {
 		InputStreamReader isr = new InputStreamReader(new BufferedInputStream(
 				System.in));
 		BufferedReader br = new BufferedReader(isr, 14);
-		System.out.println("Saisissez le numero de tel (01.23.45.67.89) : ");
+		System.out.println("Saisissez le numéro de tel (01.23.45.67.89) : ");
 		while (((num = br.readLine()) != null) && !isCorrect) {
 			if (checkSyntax(p, num))
 				isCorrect = true;
 			else
-				System.out.println("Mauvais numero, indiquez un bon numero : ");
+				System.out.println("Mauvais numéro, indiquez un bon numéro : ");
 		}
 		return new NumeroDeTelephone(num);
 	}
 
 	/*
-	 * Verifie qu'un numero est correct
+	 * Verifie qu'un numéro est correct
 	 * 
 	 * @param p la regex
-	 * @param num le numero
+	 * @param num le numéro
 	 */
 	public static boolean checkSyntax(Pattern p, String num) {
 		Matcher m = p.matcher(num);
