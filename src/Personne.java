@@ -29,12 +29,13 @@ public class Personne implements Comparable<Personne>{
 		this.prenom = prenom;
 	}
 
-	public boolean equals(Personne p) {
+	public boolean equals(Object o) {
+		Personne p = (Personne) o;
 		return nom == p.nom && prenom == p.prenom;
 	}
 	
 	public int hashCode(){
-		return (nom+prenom).hashCode();
+		return 13*nom.hashCode()+17*prenom.hashCode();
 	}
 	
 	public String toString(){
