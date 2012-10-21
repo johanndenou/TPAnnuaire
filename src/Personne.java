@@ -31,7 +31,7 @@ public class Personne implements Comparable<Personne>{
 
 	public boolean equals(Object o) {
 		Personne p = (Personne) o;
-		return nom == p.nom && prenom == p.prenom;
+		return nom.equals(p.nom) && prenom.equals(p.prenom);
 	}
 	
 	public int hashCode(){
