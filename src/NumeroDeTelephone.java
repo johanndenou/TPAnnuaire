@@ -36,17 +36,18 @@ public class NumeroDeTelephone implements Serializable {
 	 * @throws IOException
 	 */
 	public static NumeroDeTelephone saisirNumero() throws IOException {
-		String num;
+		String num = null;
 		boolean isCorrect = false;
 		InputStreamReader isr = new InputStreamReader(new BufferedInputStream(
 				System.in));
 		BufferedReader br = new BufferedReader(isr, 14);
-		System.out.println("Saisissez le numéro de tel (01.23.45.67.89) : ");
-		while (((num = br.readLine()) != null) && !isCorrect) {
-			if (checkSyntax(p, num))
+		System.out.println("Saisissez le numéro au format 01.23.45.67.89 : ");
+		while (!isCorrect && ((num = br.readLine()) != null)) {
+			if (checkSyntax(p, num)){
 				isCorrect = true;
-			else
-				System.out.println("Mauvais numéro, indiquez un bon numéro : ");
+			} else {
+				System.out.println("Mauvais numéro, indiquez un bon numéro au format 01.23.45.67.89 : ");
+			}
 		}
 		return new NumeroDeTelephone(num);
 	}
