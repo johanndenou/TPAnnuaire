@@ -1,27 +1,32 @@
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 
 public class Main {
 
+	// Annuaire
 	static Annuaire a = new Annuaire();
+	static Scanner sc = new Scanner(System.in);
 	
+	// Helpers
 	public static void affiche(Object o) {
 		System.out.println(o);
 	}
 	
 	public static String readString() {
-		Scanner sc = new Scanner(System.in);
 		String s = sc.next();
 		return s;
 	}
 
 	public static int readInt() {
-		Scanner sc = new Scanner(System.in);
 		int i = sc.nextInt();
 		return i;
 	}
 	
+	
+	// Functions
 	public static void afficherAnnuaire() {
 		a.afficher();
 	}
@@ -30,9 +35,8 @@ public class Main {
 		String n, sn;
 		affiche("Prénom ?");
 		n = readString();
-		System.out.println("Nom ?");
+		affiche("Nom ?");
 		sn = readString();
-		affiche("Numéro ?");
 		NumeroDeTelephone num;
 		try {
 			num = NumeroDeTelephone.saisirNumero();
@@ -46,11 +50,13 @@ public class Main {
 	
 	public static void chercherParNom() {
 		String n, sn;
-		affiche("Nom ?");
-		sn = readString();
 		affiche("Prénom ?");
 		n = readString();
+		affiche("Nom ?");
+		sn = readString();
 		Personne p = new Personne(sn,n);
+		affiche("'"+p+"'");
+		affiche(a.chercher(p));
 		if (a.chercher(p) == null)
 			affiche("Contact introuvable.");
 		else
@@ -91,13 +97,32 @@ public class Main {
 		}
 	}
 	
-	public static void sauvegarderAnnuaire(){
+	public static void exporterAnnuaire(){
+		try {
+			FileOutputStream fos = new FileOutputStream("test.annuaire");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(a);
+			oos.close();
+			fos.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public static void main(String[] args) {
+		
 		boolean b = true;
 		while (b) {
-			affiche("----------- Annuaire -----------\nFaites votre choix :\n1. Recherche par nom\n2. Recherche par numéro\n3. Ajouter un contact\n4. Modifier un contact \n5. Afficher l'annuaire\n6. Sauvegarder l'annuaire");
+			affiche("----------- Annuaire -----------\n" +
+					"Faites votre choix :\n" +
+					"1. Recherche par nom\n" +
+					"2. Recherche par numéro\n" +
+					"3. Ajouter un contact\n" +
+					"4. Modifier un contact\n" +
+					"5. Afficher l'annuaire\n" +
+					"6. Exporter l'annuaire\n");
+			
 			int i = readInt();
 			switch(i) {
 				case 1:
@@ -116,10 +141,10 @@ public class Main {
 					afficherAnnuaire();
 					break;
 				case 6:
-					sauvegarderAnnuaire();
+					exporterAnnuaire();
 					break;
 				default:
-					affiche("----------- Annuaire -----------\nFaites votre choix :\n1. Recherche par nom\n2. Recherche par numéro\n3. Ajouter un contact\n4. Modifier un contact \n5. Afficher l'annuaire\n6. Sauvegarder l'annuaire");
+					break;
 			}
 		}
 	}

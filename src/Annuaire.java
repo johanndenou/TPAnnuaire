@@ -1,10 +1,13 @@
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class Annuaire {
+public class Annuaire implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private Map<Personne, NumeroDeTelephone> map;
 	
 	/*
@@ -79,4 +82,6 @@ public class Annuaire {
 			System.out.println(p + " : " + map.get(p));
 		}
 	}
+	
+	
 }

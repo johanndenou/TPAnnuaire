@@ -1,5 +1,9 @@
+import java.io.Serializable;
 
-public class Personne implements Comparable<Personne>{
+
+public class Personne implements Comparable<Personne>, Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	private String nom;
 	private String prenom;
 	

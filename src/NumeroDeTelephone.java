@@ -2,11 +2,14 @@ import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class NumeroDeTelephone {
-	public String numero;
+public class NumeroDeTelephone implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
+	private String numero;
 	private static Pattern p = Pattern.compile("([0-9]{2}\\.){4}[0-9]{2}");
 	
 	public NumeroDeTelephone(String numero) {

@@ -1,7 +1,9 @@
+import java.io.IOException;
+
 
 public class test {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		Annuaire a = new Annuaire();
 		
 		Personne p = new Personne("Dupont", "Jean");
@@ -20,7 +22,7 @@ public class test {
 		a.ajouter(p2,n2);
 		a.ajouter(p3,n3);
 		a.ajouter(p4,n4);
-		
+		/*
 		a.afficher();
 		
 		Personne p5 = new Personne("Isabelle","Adjani");
@@ -32,6 +34,8 @@ public class test {
 		System.out.println(p6.equals(p5));
 		System.out.println(p6.hashCode());
 		System.out.println(p5.hashCode());
+		*/
+	
 	}
 
 }
